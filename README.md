@@ -1,7 +1,7 @@
 # E.ML-toolbox-Pruning Progress Report
 ## week 7/6/2020 - 7/12/2020
 ### work this week
-* Introduce work done so far with Maki
+* Introduce work done so far to Maki
 * create new repo and clean up previous code
 * finish Rewinding/late-resetting and reinitialzing
 * Capable of accepting progressive pruning
