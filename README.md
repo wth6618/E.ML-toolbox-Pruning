@@ -4,10 +4,12 @@
 * Introduce work done so far to Maki
 * create new repo and clean up previous code
 * finish Rewinding/late-resetting and reinitialzing
-* Capable of accepting progressive pruning
+* capable of accepting progressive pruning
+* finish iterative pruning
 
 ### TODO
 * conduct more testing with arbitrary input modules
+* combine and encapsulate implementations
 * cross validtion
 * continue improving accuracy to SOTA
 
