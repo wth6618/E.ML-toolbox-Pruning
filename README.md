@@ -1,4 +1,4 @@
-# E.ML-toolbox-Pruning Process Report
+# E.ML-toolbox-Pruning Progress Report
 ## week 7/6/2020 - 7/12/2020
 ### work this week
 * Introduce work done so far with Maki
