@@ -52,10 +52,8 @@ def main():
 
     # Stop criterion
     def stop_criterion(nz, n):
-        # Let's prune more than 97\% weights
-        # return nz/n < 0.03
-        # Some heuristic to keep at least as many weights as we have features
-        return nz / 2 < n_feats * 2
+        # Let's prune more than 85\% weights
+        return nz / n < 0.15
 
     train_set, test_set = make_sum_data(n_feats, n_train, n_test,
                                         train_range, test_range)
@@ -106,7 +104,7 @@ def main():
         w_k = train(net, verbose=True)
         pruning.step()
         nz, n = pruning.count_nonzero(), pruning.numel()
-        print("Pruning {}; num of non-zero weights {} ; remaining weights ~= {:3.2f}%"
+        print("Pruning {} of current weight; num of non-zero weights {} ; remaining weights = {:3.2f}%"
               .format(pruning_rate, nz, nz / n * 100))
         if stop_criterion(nz, n):
             print("Stopping criterion met.")
