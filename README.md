@@ -1,9 +1,16 @@
 # E.ML-toolbox-Pruning Process Report
 ## week 7/6/2020 - 7/12/2020
+### work this week
 * Introduce work done so far with Maki
 * create new repo and clean up previous code
 * finish Rewinding/late-resetting and reinitialzing
 * Capable of accepting progressive pruning
+
+### TODO
+* conduct more testing with arbitrary input modules
+* cross validtion
+* continue improving accuracy to SOTA
+
 ### rewinding and progressive pruning
 ```
 prune more than 85%
@@ -31,3 +38,10 @@ Stopping criterion met.
 ```
 ### Old testing data
 
+#### testing result
+![testing result](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/model_overview.PNG)
+
+#### prune result raw
+![Result before refine](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/exp_result_cifar10_resnet164.png)
+#### pruning result with finetuning
+![result after refine](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/exp_result_cifar10_resnet164_refined.png)
