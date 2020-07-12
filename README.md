@@ -45,3 +45,5 @@ Stopping criterion met.
 ![Result before refine](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/exp_result_cifar10_resnet164.png)
 #### pruning result with finetuning
 ![result after refine](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/exp_result_cifar10_resnet164_refined.png)
+#### Iterative Pruning
+![iterative pruning](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/iterative_cifar10_resnet164.png)
