@@ -4,8 +4,8 @@ import torch
 import torch.nn as nn
 
 
-class L1:
-    """ L1 based pruning with an optimizer-like interface  """
+class Vector:
+    """ Vector pruning with an optimizer-like interface  """
 
     def __init__(self, model, pruning_rate=0.25):
         """ Init pruning method """
@@ -14,7 +14,6 @@ class L1:
 
         # init masks
         self.masks = []
-        self.cfg = []
 
     ################################################
     # Reporting nonzero entries and number of params
@@ -44,35 +43,25 @@ class L1:
     def step(self):
         """ Update the pruning masks """
 
-        self.cfg = []
         self.masks = []
-        for m in self.model.modules():
-            if isinstance(m, nn.Conv2d):
-                out_channels = m.weight.data.shape[0]
-                prune_prob_stage = self.pruning_rate
-                weight_copy = m.weight.data.abs().clone().cpu().numpy()
-                L1_norm = np.sum(weight_copy, axis=(1, 2, 3))
-                num_keep = int(out_channels * (1 - prune_prob_stage))
-                arg_max = np.argsort(L1_norm)
-                arg_max_rev = arg_max[::-1][:num_keep]
-                mask = torch.zeros(out_channels)
-                mask[arg_max_rev.tolist()] = 1
+        for layer in self.model.modules():
+            if isinstance(layer, nn.Conv2d):
+                total = layer.out_channels * layer.kernel_size[0]
+                row_sum = layer.weight.data.abs().clone().sum((1, 3), keepdim=True)
+                flat, indice = torch.sort(row_sum.flatten())
+                threshold = flat[int(np.ceil(int(total) * self.pruning_rate))]
+
+                m_weight = layer.weight.data.abs().clone()
+                mask = m_weight.sum((1, 3), keepdim=True).gt(threshold).float().cuda()
                 self.masks.append(mask)
-                self.cfg.append(num_keep)
 
     def zero_params(self, masks=None):
         """ Apply the masks, ie, zero out the params """
-        layer_id_in_cfg = 0
-        conv_count = 1
+        sks = masks if masks is not None else self.masks
+        conv_count = 0
         for layer in self.model.modules():
             if isinstance(layer, nn.Conv2d):
-                mask = self.masks[layer_id_in_cfg]
-                idx = np.squeeze(np.argwhere(np.asarray(mask.cpu().numpy())))
-                if idx.size == 1:
-                    idx = np.resize(idx, (1,))
-                w = layer.weight.data[idx.tolist(), :, :, :].clone()
-                layer.weight.data = w.clone()
-                layer_id_in_cfg += 1
+                layer.weight.data.mul_(masks[conv_count])
                 conv_count += 1
 
     ##############
