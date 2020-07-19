@@ -25,12 +25,12 @@
 
 ### TODO
 * continue to modify the pruning method, the goal is to accept arbitrary input network
-* adapt orthognal to reinitialization and test
+* adapt variance scaling and orthognal to reinitialization and test
 * continue working on pytorch version of [A Signal Propagation Perspective for Pruning Neural Networks at Initialization](https://arxiv.org/abs/1906.06307); including  jacobian_singular_value  
 
 ### Additional Thoughts about Pruning methods Functionality
  * Having a pruning performed on untrained network at initialization prior to training?
- * Having a (re)initialization option; (re)initialization include random, vaiance scaling abd orthogonal
+ * Having a (re)initialization option; (re)initialization include random, variance scaling abd orthogonal
  * Having a rewind option; rewind to an early stage with the highest scoring
 
 ### Rethinking-network-pruning result comparsion
