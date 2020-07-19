@@ -12,7 +12,26 @@
 * combine and encapsulate implementations
 * cross validtion
 * continue improving accuracy to SOTA
+## week 7/13/2020 - 7/19/2020
+### work this week
+* Maki:
+  * Adapted open-source pruning implementations to toolbox interface
+  * compare modified pruning method's result to paper's result
+* Tianhao: 
+  * modify and testing iterative pruning 
+  * reproduce [A Signal Propagation Perspective for Pruning Neural Networks at Initialization](https://arxiv.org/abs/1906.06307) [__tensorflow__] as pytorch
+  * Adding enforce_isometry as an option for pruning method to enforce approximate dynamical isometry in the sparse network (has unsolved issues)
+  
 
+### TODO
+* continue to modify the pruning method, the goal is to accept arbitrary input network
+* adapt orthognal to reinitialization and test
+* continue working on pytorch version of [A Signal Propagation Perspective for Pruning Neural Networks at Initialization](https://arxiv.org/abs/1906.06307); including  jacobian_singular_value  
+
+### Rethinking-network-pruning result comparsion
+maki ni de tu
+### Iterative Pruning
+![iterative pruning](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/iterative%20pruning.png)
 ### rewinding and progressive pruning
 ```
 prune more than 85%
@@ -38,24 +57,7 @@ Rewinding params to epoch 1
 Pruning 0.25 of current weight; num of non-zero weights 668 ; remaining weights = 13.36%
 Stopping criterion met.
 ```
-## week 7/13/2020 - 7/19/2020
-### work this week
-* Maki:
-  * Adapted open-source pruning implementations to toolbox interface
-  * compare modified pruning method's result to paper's result
-* Tianhao: 
-  * modify and testing iterative pruning 
-  * reproduce [A Signal Propagation Perspective for Pruning Neural Networks at Initialization](https://arxiv.org/abs/1906.06307) [__tensorflow__] as pytorch
-  * Adding enforce_isometry as an option for pruning method to enforce approximate dynamical isometry in the sparse network (has unsolved issues)
-  
 
-### TODO
-* continue to modify the pruning method, the goal is to accept arbitrary input network
-* adapt orthognal to reinitialization and test
-* continue working on pytorch version of [A Signal Propagation Perspective for Pruning Neural Networks at Initialization](https://arxiv.org/abs/1906.06307); including  jacobian_singular_value  
-
-### rethinking-network-pruning result comparsion
-maki ni de tu
 
 ### Old testing data
 
@@ -66,5 +68,4 @@ maki ni de tu
 ![Result before refine](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/exp_result_cifar10_resnet164.png)
 #### pruning result with finetuning
 ![result after refine](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/exp_result_cifar10_resnet164_refined.png)
-#### Iterative Pruning
-![iterative pruning](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/iterative_cifar10_resnet164.png)
+
