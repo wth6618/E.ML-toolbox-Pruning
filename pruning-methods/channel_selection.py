@@ -85,7 +85,7 @@ class Channel_selection:
 
     def zero_params(self, masks=None):
         """ Apply the masks, ie, zero out the params """
-        sks = masks if masks is not None else self.masks
+        masks = masks if masks is not None else self.masks
 
         modules = list(self.model.modules())
         layer_id_in_cfg = 0

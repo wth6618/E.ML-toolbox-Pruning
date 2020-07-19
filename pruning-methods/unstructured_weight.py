@@ -17,24 +17,26 @@ def cut(pruning_rate, flat_params):
 class Unstructured():
     """ Magnitude pruning with an optimizer-like interface  """
 
-    def __init__(self, params, pruning_rate=0.25, local=True,
+    def __init__(self, model, pruning_rate=0.25, local=True,
                  exclude_biases=False):
         """ Init pruning method """
         self.local = bool(local)
         self.pruning_rate = float(pruning_rate)
 
-        if exclude_biases:
-            # Discover all non-bias parameters
-            self.params = [p for p in params if p.dim() > 1]
-        else:
-            self.params = [p for p in params]
+        # if exclude_biases:
+        #     # Discover all non-bias parameters
+        #     self.params = [p for p in params if p.dim() > 1]
+        # else:
+        #     self.params = [p for p in params]
+        self.model = model
 
-        # init masks to all ones
-        masks = []
-        for p in self.params:
-            masks.append(torch.ones_like(p))
-
-        self.masks = masks
+        self.masks = []
+        # # init masks to all ones
+        # masks = []
+        # for p in self.params:
+        #     masks.append(torch.ones_like(p))
+        #
+        # self.masks = masks
 
     ################################################
     # Reporting nonzero entries and number of params
@@ -51,11 +53,11 @@ class Unstructured():
     # Methods for resetting or rewinding params
     def clone_params(self):
         """ Copy all tracked params, such that they we can rewind to them later """
-        return [p.clone() for p in self.params]
+        return [p.clone() for p in self.model.parameters()]
 
     def rewind(self, cloned_params):
         """ Rewind to previously stored params """
-        for p_old, p_new in zip(self.params, cloned_params):
+        for p_old, p_new in zip(self.model.parameters(), cloned_params):
             p_old.data = p_new.data
     ############################################
 
@@ -63,32 +65,69 @@ class Unstructured():
     # Core methods
     def step(self):
         """ Update the pruning masks """
-        if self.local:  # Local (layer-wise) pruning #
-            for i, (m, p) in enumerate(zip(self.masks, self.params)):
-                # Compute cutoff
-                flat_params = p[m == 1].view(-1)
-                cutoff = cut(self.pruning_rate, flat_params)
-                # Update mask
-                new_mask = torch.where(torch.abs(p) < cutoff,
-                                       torch.zeros_like(p), m)
-                self.masks[i] = new_mask
-        else:  # Global pruning #
+        total = 0
+        for m in self.model.modules():
+            if isinstance(m, nn.Conv2d):
+                total += m.weight.data.numel()
+        conv_weights = torch.zeros(total)
+        index = 0
+        for m in self.model.modules():
+            if isinstance(m, nn.Conv2d):
+                size = m.weight.data.numel()
+                conv_weights[index:(index + size)] = m.weight.data.view(-1).abs().clone()
+                index += size
 
-            # Gather all masked parameters
-            flat_params = torch.cat([p[m == 1].view(-1)
-                                     for m, p in zip(self.masks, self.params)])
-            # Compute cutoff value
-            cutoff = cut(self.pruning_rate, flat_params)
+        y, i = torch.sort(conv_weights)
+        thre_index = int(total * self.pruning_rate)
+        thre = y[thre_index]
+        pruned = 0
+        print('Pruning threshold: {}'.format(thre))
+        zero_flag = False
+        for k, m in enumerate(self.model.modules()):
+            if isinstance(m, nn.Conv2d):
+                weight_copy = m.weight.data.abs().clone()
+                mask = weight_copy.gt(thre).float().cuda()
+                pruned = pruned + mask.numel() - torch.sum(mask)
+                self.masks.append(mask)
 
-            # Calculate updated masks
-            for i, (m, p) in enumerate(zip(self.masks, self.params)):
-                new_mask = torch.where(torch.abs(p) < cutoff,
-                                       torch.zeros_like(p), m)
-                self.masks[i] = new_mask
+                if int(torch.sum(mask)) == 0:
+                    zero_flag = True
+                print('layer index: {:d} \t total params: {:d} \t remaining params: {:d}'.
+                      format(k, mask.numel(), int(torch.sum(mask))))
+        print('Total conv params: {}, Pruned conv params: {}, Pruned ratio: {}'.format(total, pruned, pruned / total))
+
+        # if self.local:  # Local (layer-wise) pruning #
+        #     for i, (m, p) in enumerate(zip(self.masks, self.params)):
+        #         # Compute cutoff
+        #         flat_params = p[m == 1].view(-1)
+        #         cutoff = cut(self.pruning_rate, flat_params)
+        #         # Update mask
+        #         new_mask = torch.where(torch.abs(p) < cutoff,
+        #                                torch.zeros_like(p), m)
+        #         self.masks[i] = new_mask
+        # else:  # Global pruning #
+        #
+        #     # Gather all masked parameters
+        #     flat_params = torch.cat([p[m == 1].view(-1)
+        #                              for m, p in zip(self.masks, self.params)])
+        #     # Compute cutoff value
+        #     cutoff = cut(self.pruning_rate, flat_params)
+        #
+        #     # Calculate updated masks
+        #     for i, (m, p) in enumerate(zip(self.masks, self.params)):
+        #         new_mask = torch.where(torch.abs(p) < cutoff,
+        #                                torch.zeros_like(p), m)
+        #         self.masks[i] = new_mask
 
     def zero_params(self, masks=None):
         """ Apply the masks, ie, zero out the params """
         masks = masks if masks is not None else self.masks
-        for m, p in zip(masks, self.params):
-            p.data = m * p.data
+        # for m, p in zip(masks, self.params):
+        #     p.data = m * p.data
+        layer = 0
+        for k, m in enumerate(self.model.modules()):
+            if isinstance(m, nn.Conv2d):
+                m.weight.data.mul_(masks[layer])
+                layer += 1
+
     ##############
