@@ -28,12 +28,18 @@
 * adapt orthognal to reinitialization and test
 * continue working on pytorch version of [A Signal Propagation Perspective for Pruning Neural Networks at Initialization](https://arxiv.org/abs/1906.06307); including  jacobian_singular_value  
 
+### Additional Thoughts about Pruning methods Functionality
+ * Having a pruning performed on untrained network at initialization prior to training?
+ * Having a (re)initialization option; (re)initialization include random, vaiance scaling abd orthogonal
+ * Having a rewind option; rewind to an early stage with the highest scoring
+
 ### Rethinking-network-pruning result comparsion
 ![](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/comparisons.PNG)
+### ResNet50 result
 ![](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/cifar50.PNG)
 ### Iterative Pruning
-![iterative pruning](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/iterative%20pruning.png)
-### rewinding and progressive pruning
+![iterative pruning](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/iterative%20vs%20oneshot.png)
+### rewinding and Iterative pruning
 ```
 prune more than 85%
 pruning iteration: 0 iter
