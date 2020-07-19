@@ -29,7 +29,8 @@
 * continue working on pytorch version of [A Signal Propagation Perspective for Pruning Neural Networks at Initialization](https://arxiv.org/abs/1906.06307); including  jacobian_singular_value  
 
 ### Rethinking-network-pruning result comparsion
-maki ni de tu
+![](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/comparisons.PNG)
+![](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/cifar50.PNG)
 ### Iterative Pruning
 ![iterative pruning](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/iterative%20pruning.png)
 ### rewinding and progressive pruning
