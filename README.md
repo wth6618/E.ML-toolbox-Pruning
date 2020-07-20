@@ -41,7 +41,7 @@
 ![iterative pruning](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/iterative%20vs%20oneshot.png)
 ### rewinding and Iterative pruning
 ```
-prune more than 85%
+prune more than 80%
 pruning iteration: 0 iter
 Pruning 0.25 of current weight; num of non-zero weights 3750 ; remaining weights = 75.00%
 pruning iteration: 1 iter
