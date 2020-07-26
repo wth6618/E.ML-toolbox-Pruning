@@ -28,6 +28,7 @@
 * adapt variance scaling and orthognal to reinitialization and test
 * continue working on pytorch version of [A Signal Propagation Perspective for Pruning Neural Networks at Initialization](https://arxiv.org/abs/1906.06307); including  jacobian_singular_value  
 
+
 ### Additional Thoughts about Pruning methods Functionality
  * Having a pruning performed on untrained network at initialization prior to training?
  * Having a (re)initialization option; (re)initialization include random, variance scaling abd orthogonal
@@ -64,6 +65,21 @@ Rewinding params to epoch 1
 Pruning 0.25 of current weight; num of non-zero weights 668 ; remaining weights = 13.36%
 Stopping criterion met.
 ```
+## week 7/20/2020 - 7/26/2020
+### Work done this week
+* Tianhao: 
+  * reproduce [A Signal Propagation Perspective for Pruning Neural Networks at Initialization](https://arxiv.org/abs/1906.06307) [__tensorflow__] as pytorch (issue: Accuracy result on ResNet56 with orthogonal initialization with enforced isometry is 4% lower than the result in paper )
+  * Read through: https://nervanasystems.github.io/distiller/algo_pruning.html and make modification accordingly.
+#### Modification:
+* __Magnitude pruning__: Allow user to choose between layer wise weight pruning and global weight pruning. (Done)
+* __Sensitivity Pruner__:use iterative pruning scheduling, the threshold is set once based on a one-time calculation of the _standard-deviation_ of the tensor (the first time we prune) (debugging)
+* __AGP(Automated Gradual Pruner)__:  gradually reduce the number of weights being pruned each time as there are fewer and fewer weights remaining. (not started)
+* __RNN Pruner__: Not sure about this one
+* __Splicing Pruner__:  both prunes and splices connections (Not sure about this one)
+* __Network Trimming__: pruner uses the activation channels mean APoZ (average percentage of zeros) to rank weight filters and prune a specified percentage of filters.(working on it)
+* __GradientRankedFilterPruner__: using the product of their gradients and the filter value.(Not sure about this one)
+* __RandomRankedFilterPruner__: we don't need this one
+#### Note: Networking Sliming and jacobian singularity value(scoring) is our new features. I suggest we focus on AGP because of two reasons stated in this toolbox: 1) Doesn't require much hyper-parameter tuning 2) Does not make any assumptions about the structure of the network(generally applicable)
 
 
 ### Old testing data
