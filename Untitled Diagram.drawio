@@ -1,1 +1,64 @@
-<mxfile host="app.diagrams.net" modified="2020-08-02T21:57:55.413Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36" version="13.5.8" etag="5YUY5NhGi5QOX_e0yF0t" type="github"><diagram id="O7d8DtEBDSTAmzCauMVb">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2020-08-02T23:29:48.318Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36" etag="A0Ku9a9hZeyYvpTORAK6" version="13.5.8" type="github">
+  <diagram id="O7d8DtEBDSTAmzCauMVb" name="Page-1">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="20" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sau1-n61bi_LrBvrhJqJ-1" value="&lt;font style=&quot;font-size: 20px&quot;&gt;&lt;b&gt;Pruning&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="338" y="20" width="175" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="sau1-n61bi_LrBvrhJqJ-6" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Magnitude&amp;nbsp;&lt;/b&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="100" y="140" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sau1-n61bi_LrBvrhJqJ-7" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Scheduling&lt;/b&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="640" y="140" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sau1-n61bi_LrBvrhJqJ-8" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Scoring&lt;/b&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="460" y="140" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sau1-n61bi_LrBvrhJqJ-9" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;b&gt;Structured&lt;/b&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="140" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sau1-n61bi_LrBvrhJqJ-10" value="&lt;font style=&quot;font-size: 14px&quot;&gt;Unstructured&lt;br&gt;(vector Pruning)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="100" y="260" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sau1-n61bi_LrBvrhJqJ-11" value="&lt;font style=&quot;font-size: 14px&quot;&gt;Sensitivity Pruning&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="100" y="380" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sau1-n61bi_LrBvrhJqJ-12" value="&lt;font style=&quot;font-size: 14px&quot;&gt;Soft filter&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="600" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sau1-n61bi_LrBvrhJqJ-13" value="&lt;font color=&quot;#ff0000&quot; style=&quot;font-size: 14px&quot;&gt;Network Triming&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="380" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sau1-n61bi_LrBvrhJqJ-14" value="&lt;font style=&quot;font-size: 14px&quot;&gt;Network Slimming&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="260" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sau1-n61bi_LrBvrhJqJ-15" value="&lt;font style=&quot;font-size: 14px&quot;&gt;L1-Norm&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="500" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sau1-n61bi_LrBvrhJqJ-16" value="&lt;font style=&quot;font-size: 14px&quot;&gt;Jacobin Singularity&lt;br&gt;value&amp;nbsp;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="460" y="260" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sau1-n61bi_LrBvrhJqJ-17" value="&lt;font style=&quot;font-size: 14px&quot; color=&quot;#ff8000&quot;&gt;SNIP&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="460" y="380" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sau1-n61bi_LrBvrhJqJ-18" value="&lt;font style=&quot;font-size: 14px&quot; color=&quot;#ff8000&quot;&gt;Synaptic flow&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="460" y="500" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sau1-n61bi_LrBvrhJqJ-19" value="&lt;font style=&quot;font-size: 14px&quot;&gt;Iterative&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="640" y="260" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sau1-n61bi_LrBvrhJqJ-20" value="&lt;font color=&quot;#ff0000&quot; style=&quot;font-size: 14px&quot;&gt;AGP(Automated gradual pruner)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="640" y="380" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sau1-n61bi_LrBvrhJqJ-23" value="&lt;font style=&quot;font-size: 18px&quot;&gt;Note:&lt;br&gt;Black : Done&lt;br&gt;&lt;font color=&quot;#ff8000&quot;&gt;Orange&lt;/font&gt;: almost done&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;Red&lt;/font&gt;: not started yet&lt;/font&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
+          <mxGeometry x="20" y="510" width="220" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="sau1-n61bi_LrBvrhJqJ-26" value="&lt;p style=&quot;margin: 6px 0px 0px ; text-align: center ; font-size: 22px&quot;&gt;&lt;b&gt;&lt;font style=&quot;font-size: 22px&quot;&gt;Features&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 22px&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px ; font-size: 22px&quot;&gt;&lt;font style=&quot;font-size: 22px&quot;&gt;1. Global/ local&amp;nbsp;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px ; font-size: 22px&quot;&gt;&lt;font style=&quot;font-size: 22px&quot;&gt;2. Rewinding&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px ; font-size: 22px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="245.5" y="740" width="360" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
