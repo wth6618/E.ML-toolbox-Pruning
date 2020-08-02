@@ -81,6 +81,26 @@ Stopping criterion met.
 * __RandomRankedFilterPruner__: we don't need this one
 #### Note: Networking Sliming and jacobian singularity value(scoring) is our new features. I suggest we focus on AGP because of two reasons stated in this toolbox: 1) Doesn't require much hyper-parameter tuning 2) Does not make any assumptions about the structure of the network(generally applicable)
 
+## week 7/27/2020 - 8/2/2020
+### Work done this week
+* Tianhao:
+ * Finish Sensitivity Pruning
+ * Go through Tensorflow Lite tutor
+ * Read three papers that recommended from xiaohan
+ * Reproduce [SNIP](https://arxiv.org/abs/1810.02340) and [Synaptic Flow](https://arxiv.org/abs/2006.05467)
+ 
+### Sensitivity Pruning result
+
+```
+ Don't need to provide a prune ratio. Threshold is calculated based on standard deviation of each layer and sensitivity . 
+```
+
+| Network |  BaseLine    |test Accuracy      |  Total Sparity after pruning |
+|----------|:----------:|:----------:|------:|
+| ResNet50 | 93.86% |93.13% | 81.7% |
+
+### Pruning Summary
+![Pruning Summary](https://github.com/wth6618/E.ML-toolbox-Pruning/blob/master/images/pruning%20classes.png)
 
 ### Old testing data
 
